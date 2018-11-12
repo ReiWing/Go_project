@@ -1,3 +1,5 @@
+// guess challenges players to guess a random number
+
 package main
 
 import (
@@ -19,25 +21,33 @@ func main() {
 	fmt.Println("Can you guess it?")
 
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Print("Make a guess: ")
-	input, error := reader.ReadString('\n')
-	if error != nil {
-		log.Fatal(error)
-	}
+	succes := false
+	for guesses := 0; guesses < 10; guesses++ {
 
-	input = strings.TrimSpace(input)
-	guess, error := strconv.Atoi(input)
-	if error != nil {
-		log.Fatal(error)
-	}
+		fmt.Println("You have ", 10-guesses, " guesses left")
+		fmt.Print("Make a guess: ")
+		input, error := reader.ReadString('\n')
+		if error != nil {
+			log.Fatal(error)
+		}
 
-	if guess < target {
-		fmt.Println("Oops. Your guess was LOW.")
-	} else if guess > target {
-		fmt.Println("Oops. Your gusss was HIGH.")
-	} else {
-		fmt.Println("You are great!")
-	}
+		input = strings.TrimSpace(input)
+		guess, error := strconv.Atoi(input)
+		if error != nil {
+			log.Fatal(error)
+		}
 
-	fmt.Println(target)
+		if guess < target {
+			fmt.Println("Oops. Your guess was LOW.")
+		} else if guess > target {
+			fmt.Println("Oops. Your gusss was HIGH.")
+		} else {
+			fmt.Println("Good job! You guessed it!")
+			succes = true
+			break
+		}
+	}
+	if succes != true {
+		fmt.Println("Sorry you didn't guess my number. It was ", target, ".")
+	}
 }
