@@ -6,23 +6,34 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
+	"strings"
 )
 
 func main() {
 	fmt.Print("Enter a grade: ")
 	reader := bufio.NewReader(os.Stdin)
 	input, error := reader.ReadString('\n')
-	/*
-		if score == 100 {
-			fmt.Println("Flawless victory!")
-		} else if score >= 60 {
-			fmt.Println("Go ahead!")
-		} else {
-			fmt.Println("You shell not pass!")
-		}
-	*/
 	if error != nil {
 		log.Fatal(error)
 	}
-	fmt.Print(input)
+
+	input = strings.TrimSpace(input)
+	grade, error := strconv.ParseFloat(input, 64)
+	if error != nil {
+		log.Fatal(error)
+	}
+
+	var status string
+	if grade > 100 {
+		status = "Die cheater!"
+	} else if grade == 100 {
+		status = "Flawless victory!"
+	} else if grade >= 60 {
+		status = "Go ahead!"
+	} else {
+		status = "You shell not pass!"
+	}
+
+	fmt.Println("Accept your destiny...", status)
 }
