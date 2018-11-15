@@ -13,6 +13,21 @@ import (
 
 func main() {
 
+	var total_area float64
+	total_area = 0
+
+	fmt.Print("Liter per liters: ")
+	reader_liters := bufio.NewReader(os.Stdin)
+	liters_temp, error := reader_liters.ReadString('\n')
+	if error != nil {
+		log.Fatal(error)
+	}
+	liters_temp = strings.TrimSpace(liters_temp)
+	liters, error := strconv.ParseFloat(liters_temp, 64)
+	if error != nil {
+		log.Fatal(error)
+	}
+
 	// Inter the number of walls
 	fmt.Print("Enter the number of walls: ")
 	reader_walls := bufio.NewReader(os.Stdin)
@@ -55,10 +70,15 @@ func main() {
 			log.Fatal(error)
 		}
 
-		paintNeeded(width, height)
+		area := width * height
+		fmt.Printf("%0.2f liters needed for this wall.\n", area/liters)
+		total_area = total_area + area
+		fmt.Printf("Total area now is: %0.2f\n", total_area)
 	}
+	fmt.Printf("%0.2f liters needed for all walls.\n", total_area/liters)
 }
 
 func paintNeeded(width, height float64) {
-	fmt.Printf("%0.2f liters needed.\n", width*height/10.0)
+	area := width * height / 10.0
+	fmt.Printf("%0.2f liters needed.\n", area)
 }
