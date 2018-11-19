@@ -4,10 +4,10 @@ import "fmt"
 
 func main() {
 	amount := 6
-	double(amount)
+	double(&amount)
 	fmt.Println(amount)
 }
 
-func double(number int) {
-	number *= 2
+func double(number *int) {
+	*number *= 2
 }

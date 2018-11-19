@@ -19,5 +19,5 @@ func main() {
 	fmt.Println(myInt, myBool, myString)
 
 	cans, reminder := floatParts(22.26)
-	fmt.Printf(cans, reminder)
+	fmt.Println(cans, reminder)
 }
