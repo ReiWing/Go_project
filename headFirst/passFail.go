@@ -2,26 +2,16 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
+	"keyboard"
 	"log"
-	"os"
-	"strconv"
-	"strings"
 )
 
 func main() {
-	fmt.Print("Enter a grade: ")
-	reader := bufio.NewReader(os.Stdin)
-	input, error := reader.ReadString('\n')
-	if error != nil {
-		log.Fatal(error)
-	}
-
-	input = strings.TrimSpace(input)
-	grade, error := strconv.ParseFloat(input, 64)
-	if error != nil {
-		log.Fatal(error)
+	fmt.Println("Enter grade: ")
+	grade, err := keyboard.GetFloat()
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	var status string
