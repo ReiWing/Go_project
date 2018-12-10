@@ -18,9 +18,9 @@ func main() {
 	myIntPointer = &myInt
 	fmt.Println(*myIntPointer)
 
-	var myFloatPointer *float64 = createPointer()
+	var myFloatPointer = createPointer()
 	fmt.Println(myFloatPointer, *myFloatPointer)
 
-	var myBool bool = true
+	var myBool = true
 	printPointer(&myBool)
 }

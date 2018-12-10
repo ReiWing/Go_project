@@ -13,25 +13,25 @@ import (
 
 func main() {
 
-	var total_area float64
-	total_area = 0
+	var totalArea float64
+	totalArea = 0
 
 	fmt.Print("Liter per liters: ")
-	reader_liters := bufio.NewReader(os.Stdin)
-	liters_temp, error := reader_liters.ReadString('\n')
+	readerLiters := bufio.NewReader(os.Stdin)
+	litersTemp, error := readerLiters.ReadString('\n')
 	if error != nil {
 		log.Fatal(error)
 	}
-	liters_temp = strings.TrimSpace(liters_temp)
-	liters, error := strconv.ParseFloat(liters_temp, 64)
+	litersTemp = strings.TrimSpace(litersTemp)
+	liters, error := strconv.ParseFloat(litersTemp, 64)
 	if error != nil {
 		log.Fatal(error)
 	}
 
 	// Inter the number of walls
 	fmt.Print("Enter the number of walls: ")
-	reader_walls := bufio.NewReader(os.Stdin)
-	wallsCount, error := reader_walls.ReadString('\n')
+	readerWalls := bufio.NewReader(os.Stdin)
+	wallsCount, error := readerWalls.ReadString('\n')
 	if error != nil {
 		log.Fatal(error)
 	}
@@ -46,36 +46,36 @@ func main() {
 
 		//Enter the width of wall
 		fmt.Print("Enter the width of wall number ", x, ": ")
-		reader_width := bufio.NewReader(os.Stdin)
-		width_temp, error := reader_width.ReadString('\n')
+		readerWidth := bufio.NewReader(os.Stdin)
+		widthTemp, error := readerWidth.ReadString('\n')
 		if error != nil {
 			log.Fatal(error)
 		}
-		width_temp = strings.TrimSpace(width_temp)
-		width, error := strconv.ParseFloat(width_temp, 64)
+		widthTemp = strings.TrimSpace(widthTemp)
+		width, error := strconv.ParseFloat(widthTemp, 64)
 		if error != nil {
 			log.Fatal(error)
 		}
 
 		//Enter the height of wall
 		fmt.Print("Enter the height of wall number ", x, ": ")
-		reader_height := bufio.NewReader(os.Stdin)
-		height_temp, error := reader_height.ReadString('\n')
+		readerHeight := bufio.NewReader(os.Stdin)
+		heightTemp, error := readerHeight.ReadString('\n')
 		if error != nil {
 			log.Fatal(error)
 		}
-		height_temp = strings.TrimSpace(height_temp)
-		height, error := strconv.ParseFloat(height_temp, 64)
+		heightTemp = strings.TrimSpace(heightTemp)
+		height, error := strconv.ParseFloat(heightTemp, 64)
 		if error != nil {
 			log.Fatal(error)
 		}
 
 		area := width * height
 		fmt.Printf("%0.2f liters needed for this wall.\n", area/liters)
-		total_area = total_area + area
-		fmt.Printf("Total area now is: %0.2f\n", total_area)
+		totalArea = totalArea + area
+		fmt.Printf("Total area now is: %0.2f\n", totalArea)
 	}
-	fmt.Printf("%0.2f liters needed for all walls.\n", total_area/liters)
+	fmt.Printf("%0.2f liters needed for all walls.\n", totalArea/liters)
 }
 
 func paintNeeded(width, height float64) {
